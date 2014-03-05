@@ -33,6 +33,7 @@
 		D3FB88D518C75167008F7D2B /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3FB88CC18C75167008F7D2B /* StoreKit.framework */; };
 		D3FB88D618C75167008F7D2B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3FB88CD18C75167008F7D2B /* SystemConfiguration.framework */; };
 		D3FB88D818C765DC008F7D2B /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3FB88D718C765DC008F7D2B /* Parse.framework */; };
+		D3FB88DA18C76BC4008F7D2B /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3FB88D918C76BC4008F7D2B /* FacebookSDK.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		D3FB88CC18C75167008F7D2B /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		D3FB88CD18C75167008F7D2B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		D3FB88D718C765DC008F7D2B /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		D3FB88D918C76BC4008F7D2B /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 				D3FB888A18C74D47008F7D2B /* CoreGraphics.framework in Frameworks */,
 				D3FB888C18C74D47008F7D2B /* UIKit.framework in Frameworks */,
 				D3FB888818C74D47008F7D2B /* Foundation.framework in Frameworks */,
+				D3FB88DA18C76BC4008F7D2B /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,6 +140,7 @@
 		D3FB888618C74D47008F7D2B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D3FB88D918C76BC4008F7D2B /* FacebookSDK.framework */,
 				D3FB88D718C765DC008F7D2B /* Parse.framework */,
 				D3FB88C518C75167008F7D2B /* AudioToolbox.framework */,
 				D3FB88C618C75167008F7D2B /* CFNetwork.framework */,

@@ -45,7 +45,7 @@
 
 - (IBAction)loginButtonPressed:(UIButton *)sender
 {
-    
+    NSArray *permissionsArray = @[@"user_about_me", @"user_interests", @"user_relationships", @"user_birthday", @"user_location", @"user_relationship_details"];
 }
 
 
