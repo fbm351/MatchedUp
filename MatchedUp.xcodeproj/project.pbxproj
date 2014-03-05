@@ -23,7 +23,6 @@
 		D3FB88B418C74D47008F7D2B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D3FB88B218C74D47008F7D2B /* InfoPlist.strings */; };
 		D3FB88B618C74D47008F7D2B /* MatchedUpTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D3FB88B518C74D47008F7D2B /* MatchedUpTests.m */; };
 		D3FB88C118C74DDB008F7D2B /* FMLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3FB88C018C74DDB008F7D2B /* FMLoginViewController.m */; };
-		D3FB88C418C75100008F7D2B /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3FB88C318C75100008F7D2B /* Parse.framework */; };
 		D3FB88CE18C75167008F7D2B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3FB88C518C75167008F7D2B /* AudioToolbox.framework */; };
 		D3FB88CF18C75167008F7D2B /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3FB88C618C75167008F7D2B /* CFNetwork.framework */; };
 		D3FB88D018C75167008F7D2B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3FB88C718C75167008F7D2B /* CoreLocation.framework */; };
@@ -33,6 +32,7 @@
 		D3FB88D418C75167008F7D2B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3FB88CB18C75167008F7D2B /* Security.framework */; };
 		D3FB88D518C75167008F7D2B /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3FB88CC18C75167008F7D2B /* StoreKit.framework */; };
 		D3FB88D618C75167008F7D2B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3FB88CD18C75167008F7D2B /* SystemConfiguration.framework */; };
+		D3FB88D818C765DC008F7D2B /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3FB88D718C765DC008F7D2B /* Parse.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,7 +69,6 @@
 		D3FB88B518C74D47008F7D2B /* MatchedUpTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MatchedUpTests.m; sourceTree = "<group>"; };
 		D3FB88BF18C74DDB008F7D2B /* FMLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMLoginViewController.h; sourceTree = "<group>"; };
 		D3FB88C018C74DDB008F7D2B /* FMLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMLoginViewController.m; sourceTree = "<group>"; };
-		D3FB88C318C75100008F7D2B /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = ../../../Downloads/Parse.framework; sourceTree = "<group>"; };
 		D3FB88C518C75167008F7D2B /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		D3FB88C618C75167008F7D2B /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		D3FB88C718C75167008F7D2B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -79,6 +78,7 @@
 		D3FB88CB18C75167008F7D2B /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		D3FB88CC18C75167008F7D2B /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		D3FB88CD18C75167008F7D2B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		D3FB88D718C765DC008F7D2B /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,12 +92,12 @@
 				D3FB88D118C75167008F7D2B /* libz.dylib in Frameworks */,
 				D3FB88D218C75167008F7D2B /* MobileCoreServices.framework in Frameworks */,
 				D3FB88D318C75167008F7D2B /* QuartzCore.framework in Frameworks */,
+				D3FB88D818C765DC008F7D2B /* Parse.framework in Frameworks */,
 				D3FB88D418C75167008F7D2B /* Security.framework in Frameworks */,
 				D3FB88D518C75167008F7D2B /* StoreKit.framework in Frameworks */,
 				D3FB88D618C75167008F7D2B /* SystemConfiguration.framework in Frameworks */,
 				D3FB888A18C74D47008F7D2B /* CoreGraphics.framework in Frameworks */,
 				D3FB888C18C74D47008F7D2B /* UIKit.framework in Frameworks */,
-				D3FB88C418C75100008F7D2B /* Parse.framework in Frameworks */,
 				D3FB888818C74D47008F7D2B /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -137,6 +137,7 @@
 		D3FB888618C74D47008F7D2B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D3FB88D718C765DC008F7D2B /* Parse.framework */,
 				D3FB88C518C75167008F7D2B /* AudioToolbox.framework */,
 				D3FB88C618C75167008F7D2B /* CFNetwork.framework */,
 				D3FB88C718C75167008F7D2B /* CoreLocation.framework */,
@@ -146,7 +147,6 @@
 				D3FB88CB18C75167008F7D2B /* Security.framework */,
 				D3FB88CC18C75167008F7D2B /* StoreKit.framework */,
 				D3FB88CD18C75167008F7D2B /* SystemConfiguration.framework */,
-				D3FB88C318C75100008F7D2B /* Parse.framework */,
 				D3FB888718C74D47008F7D2B /* Foundation.framework */,
 				D3FB888918C74D47008F7D2B /* CoreGraphics.framework */,
 				D3FB888B18C74D47008F7D2B /* UIKit.framework */,
@@ -442,6 +442,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/fmyers/Downloads,
+					/Users/fmyers/Projects/iOS/MatchedUp,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MatchedUp/MatchedUp-Prefix.pch";
@@ -459,6 +460,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/fmyers/Downloads,
+					/Users/fmyers/Projects/iOS/MatchedUp,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MatchedUp/MatchedUp-Prefix.pch";
