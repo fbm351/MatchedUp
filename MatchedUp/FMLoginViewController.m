@@ -30,9 +30,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
-    testObject[@"foo"] = @"bar";
-    [testObject saveInBackground];
+    self.activityIndicator.hidden = YES;
 }
 
 - (void)didReceiveMemoryWarning
@@ -45,7 +43,32 @@
 
 - (IBAction)loginButtonPressed:(UIButton *)sender
 {
+    self.activityIndicator.hidden = NO;
+    [self.activityIndicator startAnimating];
     NSArray *permissionsArray = @[@"user_about_me", @"user_interests", @"user_relationships", @"user_birthday", @"user_location", @"user_relationship_details"];
+    
+    [PFFacebookUtils logInWithPermissions:permissionsArray block:^(PFUser *user, NSError *error) {
+        [self.activityIndicator stopAnimating];
+        self.activityIndicator.hidden = YES;
+        if (!user)
+        {
+            if (!error)
+            {
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Login Error" message:@"The Facebook Login was Canceled" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+                [alertView show];
+            }
+            else
+            {
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Login Error" message:[error description] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                [alertView show];
+            }
+        }
+        else
+        {
+            [self performSegueWithIdentifier:@"toTabBarSegue" sender:self];
+        }
+    }];
+    
 }
 
 
