@@ -34,6 +34,7 @@
 		D3FB88D618C75167008F7D2B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3FB88CD18C75167008F7D2B /* SystemConfiguration.framework */; };
 		D3FB88D818C765DC008F7D2B /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3FB88D718C765DC008F7D2B /* Parse.framework */; };
 		D3FB88DA18C76BC4008F7D2B /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3FB88D918C76BC4008F7D2B /* FacebookSDK.framework */; };
+		D3FB88DD18C781BB008F7D2B /* FMConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D3FB88DC18C781BB008F7D2B /* FMConstants.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,8 @@
 		D3FB88CD18C75167008F7D2B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		D3FB88D718C765DC008F7D2B /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		D3FB88D918C76BC4008F7D2B /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		D3FB88DB18C781BB008F7D2B /* FMConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMConstants.h; sourceTree = "<group>"; };
+		D3FB88DC18C781BB008F7D2B /* FMConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMConstants.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +186,8 @@
 				D3FB889018C74D47008F7D2B /* InfoPlist.strings */,
 				D3FB889318C74D47008F7D2B /* main.m */,
 				D3FB889518C74D47008F7D2B /* MatchedUp-Prefix.pch */,
+				D3FB88DB18C781BB008F7D2B /* FMConstants.h */,
+				D3FB88DC18C781BB008F7D2B /* FMConstants.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -316,6 +321,7 @@
 				D3FB88A118C74D47008F7D2B /* FMSecondViewController.m in Sources */,
 				D3FB889E18C74D47008F7D2B /* FMFirstViewController.m in Sources */,
 				D3FB88C118C74DDB008F7D2B /* FMLoginViewController.m in Sources */,
+				D3FB88DD18C781BB008F7D2B /* FMConstants.m in Sources */,
 				D3FB889818C74D47008F7D2B /* FMAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

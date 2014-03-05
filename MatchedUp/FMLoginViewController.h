@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FMLoginViewController : UIViewController
+@interface FMLoginViewController : UIViewController <NSURLConnectionDataDelegate>
 
 @end
