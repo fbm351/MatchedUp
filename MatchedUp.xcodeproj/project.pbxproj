@@ -14,8 +14,6 @@
 		D3FB889418C74D47008F7D2B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D3FB889318C74D47008F7D2B /* main.m */; };
 		D3FB889818C74D47008F7D2B /* FMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D3FB889718C74D47008F7D2B /* FMAppDelegate.m */; };
 		D3FB889B18C74D47008F7D2B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3FB889918C74D47008F7D2B /* Main.storyboard */; };
-		D3FB889E18C74D47008F7D2B /* FMFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3FB889D18C74D47008F7D2B /* FMFirstViewController.m */; };
-		D3FB88A118C74D47008F7D2B /* FMSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3FB88A018C74D47008F7D2B /* FMSecondViewController.m */; };
 		D3FB88A318C74D47008F7D2B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3FB88A218C74D47008F7D2B /* Images.xcassets */; };
 		D3FB88AA18C74D47008F7D2B /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3FB88A918C74D47008F7D2B /* XCTest.framework */; };
 		D3FB88AB18C74D47008F7D2B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3FB888718C74D47008F7D2B /* Foundation.framework */; };
@@ -35,6 +33,7 @@
 		D3FB88D818C765DC008F7D2B /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3FB88D718C765DC008F7D2B /* Parse.framework */; };
 		D3FB88DA18C76BC4008F7D2B /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3FB88D918C76BC4008F7D2B /* FacebookSDK.framework */; };
 		D3FB88DD18C781BB008F7D2B /* FMConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D3FB88DC18C781BB008F7D2B /* FMConstants.m */; };
+		D3FB88E018C7D2DB008F7D2B /* FMHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3FB88DF18C7D2DB008F7D2B /* FMHomeViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,10 +58,6 @@
 		D3FB889618C74D47008F7D2B /* FMAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMAppDelegate.h; sourceTree = "<group>"; };
 		D3FB889718C74D47008F7D2B /* FMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMAppDelegate.m; sourceTree = "<group>"; };
 		D3FB889A18C74D47008F7D2B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		D3FB889C18C74D47008F7D2B /* FMFirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMFirstViewController.h; sourceTree = "<group>"; };
-		D3FB889D18C74D47008F7D2B /* FMFirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMFirstViewController.m; sourceTree = "<group>"; };
-		D3FB889F18C74D47008F7D2B /* FMSecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMSecondViewController.h; sourceTree = "<group>"; };
-		D3FB88A018C74D47008F7D2B /* FMSecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMSecondViewController.m; sourceTree = "<group>"; };
 		D3FB88A218C74D47008F7D2B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D3FB88A818C74D47008F7D2B /* MatchedUpTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MatchedUpTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3FB88A918C74D47008F7D2B /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -84,6 +79,8 @@
 		D3FB88D918C76BC4008F7D2B /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		D3FB88DB18C781BB008F7D2B /* FMConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMConstants.h; sourceTree = "<group>"; };
 		D3FB88DC18C781BB008F7D2B /* FMConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMConstants.m; sourceTree = "<group>"; };
+		D3FB88DE18C7D2DB008F7D2B /* FMHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMHomeViewController.h; sourceTree = "<group>"; };
+		D3FB88DF18C7D2DB008F7D2B /* FMHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMHomeViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,11 +165,8 @@
 				D3FB889618C74D47008F7D2B /* FMAppDelegate.h */,
 				D3FB889718C74D47008F7D2B /* FMAppDelegate.m */,
 				D3FB889918C74D47008F7D2B /* Main.storyboard */,
+				D3FB88E118C7D2E6008F7D2B /* Home */,
 				D3FB88C218C74DF8008F7D2B /* Login */,
-				D3FB889C18C74D47008F7D2B /* FMFirstViewController.h */,
-				D3FB889D18C74D47008F7D2B /* FMFirstViewController.m */,
-				D3FB889F18C74D47008F7D2B /* FMSecondViewController.h */,
-				D3FB88A018C74D47008F7D2B /* FMSecondViewController.m */,
 				D3FB88A218C74D47008F7D2B /* Images.xcassets */,
 				D3FB888E18C74D47008F7D2B /* Supporting Files */,
 			);
@@ -217,6 +211,15 @@
 				D3FB88C018C74DDB008F7D2B /* FMLoginViewController.m */,
 			);
 			name = Login;
+			sourceTree = "<group>";
+		};
+		D3FB88E118C7D2E6008F7D2B /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				D3FB88DE18C7D2DB008F7D2B /* FMHomeViewController.h */,
+				D3FB88DF18C7D2DB008F7D2B /* FMHomeViewController.m */,
+			);
+			name = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -317,9 +320,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3FB88E018C7D2DB008F7D2B /* FMHomeViewController.m in Sources */,
 				D3FB889418C74D47008F7D2B /* main.m in Sources */,
-				D3FB88A118C74D47008F7D2B /* FMSecondViewController.m in Sources */,
-				D3FB889E18C74D47008F7D2B /* FMFirstViewController.m in Sources */,
 				D3FB88C118C74DDB008F7D2B /* FMLoginViewController.m in Sources */,
 				D3FB88DD18C781BB008F7D2B /* FMConstants.m in Sources */,
 				D3FB889818C74D47008F7D2B /* FMAppDelegate.m in Sources */,

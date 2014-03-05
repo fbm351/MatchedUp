@@ -1,5 +1,5 @@
 //
-//  FMSecondViewController.h
+//  FMHomeViewController.h
 //  MatchedUp
 //
 //  Created by Fredrick Myers on 3/5/14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FMSecondViewController : UIViewController
+@interface FMHomeViewController : UIViewController
 
 @end

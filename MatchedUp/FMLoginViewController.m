@@ -34,6 +34,16 @@
     self.activityIndicator.hidden = YES;
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    if ([PFUser currentUser] && [PFFacebookUtils isLinkedWithUser:[PFUser currentUser]])
+    {
+        [self updateUserInformation];
+        [self performSegueWithIdentifier:@"toTabBarSegue" sender:self];
+    }
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
