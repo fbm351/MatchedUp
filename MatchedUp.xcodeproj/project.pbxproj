@@ -35,6 +35,8 @@
 		D3FB88DD18C781BB008F7D2B /* FMConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D3FB88DC18C781BB008F7D2B /* FMConstants.m */; };
 		D3FB88E018C7D2DB008F7D2B /* FMHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3FB88DF18C7D2DB008F7D2B /* FMHomeViewController.m */; };
 		D3FB88E518C8A584008F7D2B /* FMSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3FB88E418C8A584008F7D2B /* FMSettingsViewController.m */; };
+		D3FB88E918C8AAC8008F7D2B /* FMEditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3FB88E818C8AAC8008F7D2B /* FMEditProfileViewController.m */; };
+		D3FB88ED18C8B551008F7D2B /* FMProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3FB88EC18C8B551008F7D2B /* FMProfileViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +86,10 @@
 		D3FB88DF18C7D2DB008F7D2B /* FMHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMHomeViewController.m; sourceTree = "<group>"; };
 		D3FB88E318C8A584008F7D2B /* FMSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMSettingsViewController.h; sourceTree = "<group>"; };
 		D3FB88E418C8A584008F7D2B /* FMSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMSettingsViewController.m; sourceTree = "<group>"; };
+		D3FB88E718C8AAC8008F7D2B /* FMEditProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMEditProfileViewController.h; sourceTree = "<group>"; };
+		D3FB88E818C8AAC8008F7D2B /* FMEditProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMEditProfileViewController.m; sourceTree = "<group>"; };
+		D3FB88EB18C8B551008F7D2B /* FMProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMProfileViewController.h; sourceTree = "<group>"; };
+		D3FB88EC18C8B551008F7D2B /* FMProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMProfileViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,8 +174,10 @@
 				D3FB889618C74D47008F7D2B /* FMAppDelegate.h */,
 				D3FB889718C74D47008F7D2B /* FMAppDelegate.m */,
 				D3FB889918C74D47008F7D2B /* Main.storyboard */,
+				D3FB88E618C8AA94008F7D2B /* Edit Profile */,
 				D3FB88E118C7D2E6008F7D2B /* Home */,
 				D3FB88C218C74DF8008F7D2B /* Login */,
+				D3FB88EA18C8B533008F7D2B /* Profile */,
 				D3FB88E218C8A49A008F7D2B /* Settings */,
 				D3FB88A218C74D47008F7D2B /* Images.xcassets */,
 				D3FB888E18C74D47008F7D2B /* Supporting Files */,
@@ -233,6 +241,24 @@
 				D3FB88E418C8A584008F7D2B /* FMSettingsViewController.m */,
 			);
 			name = Settings;
+			sourceTree = "<group>";
+		};
+		D3FB88E618C8AA94008F7D2B /* Edit Profile */ = {
+			isa = PBXGroup;
+			children = (
+				D3FB88E718C8AAC8008F7D2B /* FMEditProfileViewController.h */,
+				D3FB88E818C8AAC8008F7D2B /* FMEditProfileViewController.m */,
+			);
+			name = "Edit Profile";
+			sourceTree = "<group>";
+		};
+		D3FB88EA18C8B533008F7D2B /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				D3FB88EB18C8B551008F7D2B /* FMProfileViewController.h */,
+				D3FB88EC18C8B551008F7D2B /* FMProfileViewController.m */,
+			);
+			name = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -336,9 +362,11 @@
 				D3FB88E518C8A584008F7D2B /* FMSettingsViewController.m in Sources */,
 				D3FB88E018C7D2DB008F7D2B /* FMHomeViewController.m in Sources */,
 				D3FB889418C74D47008F7D2B /* main.m in Sources */,
+				D3FB88E918C8AAC8008F7D2B /* FMEditProfileViewController.m in Sources */,
 				D3FB88C118C74DDB008F7D2B /* FMLoginViewController.m in Sources */,
 				D3FB88DD18C781BB008F7D2B /* FMConstants.m in Sources */,
 				D3FB889818C74D47008F7D2B /* FMAppDelegate.m in Sources */,
+				D3FB88ED18C8B551008F7D2B /* FMProfileViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
