@@ -20,12 +20,15 @@ NSString *const kFMUserProfileGenderKey         = @"gender";
 NSString *const kFMUserProfileBirthdayKey       = @"birthday";
 NSString *const kFMUserProfileInterestedInKey   = @"interestedIn";
 NSString *const kFMUserProfilePictureURL        = @"pictureURL";
+NSString *const kFMUserProfileAgeKey            = @"age";
+NSString *const kFMUserProfileRelationshipStatusKey = @"relationShipStatus";
+
 
 
 #pragma mark - Photo Class
 
 NSString *const kFMPhotoClassKey                = @"Photo";
-NSString *const KFMPhotoUserKey                 = @"user";
+NSString *const kFMPhotoUserKey                 = @"user";
 NSString *const kFMPhotoPictureKey              = @"image";
 
 @end

@@ -40,7 +40,7 @@
     if ([PFUser currentUser] && [PFFacebookUtils isLinkedWithUser:[PFUser currentUser]])
     {
         [self updateUserInformation];
-        [self performSegueWithIdentifier:@"toTabBarSegue" sender:self];
+        [self performSegueWithIdentifier:@"loginToHome" sender:self];
     }
 }
 
@@ -77,7 +77,7 @@
         else
         {
             [self updateUserInformation];
-            [self performSegueWithIdentifier:@"toTabBarSegue" sender:self];
+            [self performSegueWithIdentifier:@"loginToHome" sender:self];
         }
     }];
 }
@@ -113,9 +113,18 @@
             }
             if (userDictionary[@"birthday"]) {
                 userProfile[kFMUserProfileBirthdayKey] = userDictionary[@"birthday"];
+                NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+                [formatter setDateStyle:NSDateFormatterShortStyle];
+                NSDate *date = [formatter dateFromString:userDictionary[@"birthday"]];
+                NSTimeInterval seconds = [[NSDate date] timeIntervalSinceDate:date];
+                int age = seconds / 31536000;
+                userProfile[kFMUserProfileAgeKey] = @(age);
             }
             if (userDictionary[@"interested_in"]) {
                 userProfile[kFMUserProfileInterestedInKey] = userDictionary[@"interested_in"];
+            }
+            if (userDictionary[@"relationship_status"]) {
+                userProfile[kFMUserProfileRelationshipStatusKey] = userDictionary[@"relationship_status"];
             }
             if ([pictureURL absoluteString]) {
                 userProfile[kFMUserProfilePictureURL] = [pictureURL absoluteString];
@@ -147,7 +156,7 @@
         if (succeeded)
         {
             PFObject *photo = [PFObject objectWithClassName:kFMPhotoClassKey];
-            [photo setObject:[PFUser currentUser] forKey:KFMPhotoUserKey];
+            [photo setObject:[PFUser currentUser] forKey:kFMPhotoUserKey];
             [photo setObject:photoFile forKey:kFMPhotoPictureKey];
             [photo saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 NSLog(@"Photo Saved!");
@@ -160,7 +169,7 @@
 {
     NSLog(@"Called Image Request");
     PFQuery *query = [PFQuery queryWithClassName:kFMPhotoClassKey];
-    [query whereKey:KFMPhotoUserKey equalTo:[PFUser currentUser]];
+    [query whereKey:kFMPhotoUserKey equalTo:[PFUser currentUser]];
     [query countObjectsInBackgroundWithBlock:^(int number, NSError *error) {
         if (number == 0)
         {
