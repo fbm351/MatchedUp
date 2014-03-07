@@ -37,7 +37,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     
-    NSLog(@"%@", [PFUser currentUser]);
+    //NSLog(@"%@", [PFUser currentUser]);
     if ([PFUser currentUser] && [PFFacebookUtils isLinkedWithUser:[PFUser currentUser]])
     {
         [self updateUserInformation];
@@ -130,7 +130,7 @@
             if ([pictureURL absoluteString]) {
                 userProfile[kFMUserProfilePictureURL] = [pictureURL absoluteString];
             }
-            NSLog(@"URL %@", userProfile[kFMUserProfilePictureURL]);
+            //NSLog(@"URL %@", userProfile[kFMUserProfilePictureURL]);
             [[PFUser currentUser] setObject:userProfile forKey:kFMUserProfileKey];
             [[PFUser currentUser] saveInBackground];
             [self requestImage];
@@ -168,7 +168,7 @@
 
 - (void)requestImage
 {
-    NSLog(@"Called Image Request");
+    //NSLog(@"Called Image Request");
     PFQuery *query = [PFQuery queryWithClassName:kFMPhotoClassKey];
     [query whereKey:kFMPhotoUserKey equalTo:[PFUser currentUser]];
     [query countObjectsInBackgroundWithBlock:^(int number, NSError *error) {

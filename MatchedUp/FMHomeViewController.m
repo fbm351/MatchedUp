@@ -261,6 +261,20 @@
     }
 }
 
+- (void)checkForPhotoUserLikes
+{
+    PFQuery *query = [PFQuery queryWithClassName:kFMActivityClassKey];
+    [query whereKey:kFMActivityFromUserKey equalTo:self.photo[kFMPhotoUserKey]];
+    [query whereKey:kFMActivityToUserKey equalTo:[PFUser currentUser]];
+    [query whereKey:kFMActivityTypeKey equalTo:kFMActivityTypeLikeKey];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
+    {
+        if ([objects count] > 0) {
+            //creat our chatroom
+        }
+    }];
+}
+
 #pragma mark - Navigation Helpers
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
