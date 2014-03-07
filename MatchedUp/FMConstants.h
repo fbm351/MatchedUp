@@ -12,6 +12,8 @@
 
 #pragma mark - User Class
 
+extern NSString *const kFMUserTagLineKey;
+
 extern NSString *const kFMUserProfileKey;
 extern NSString *const kFMUserProfileNameKey;
 extern NSString *const kFMUserProfileFirstNameKey;
@@ -31,6 +33,28 @@ extern NSString *const kFMUserProfileAgeKey;
 extern NSString *const kFMPhotoClassKey;
 extern NSString *const kFMPhotoUserKey;
 extern NSString *const kFMPhotoPictureKey;
+
+#pragma mark - Activity Class
+
+extern NSString *const kFMActivityClassKey;
+extern NSString *const kFMActivityTypeKey;
+extern NSString *const kFMActivityFromUserKey;
+extern NSString *const kFMActivityToUserKey;
+extern NSString *const kFMActivityPhotoKey;
+extern NSString *const kFMActivityTypeLikeKey;
+extern NSString *const kFMActivityTypeDislikeKey;
+
+
+
+#pragma mark - Settings
+
+extern NSString *const kFMMenEnabledKey;
+extern NSString *const kFMWomenEnabledKey;
+extern NSString *const kFMSingleEnableKey;
+extern NSString *const kFMAgeMaxKey;
+
+
+
 
 
 

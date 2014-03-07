@@ -10,4 +10,6 @@
 
 @interface FMProfileViewController : UIViewController
 
+@property (strong, nonatomic) PFObject *photo;
+
 @end

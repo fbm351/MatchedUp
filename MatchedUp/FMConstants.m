@@ -12,6 +12,8 @@
 
 #pragma mark - User Class
 
+NSString *const kFMUserTagLineKey               = @"tagLine";
+
 NSString *const kFMUserProfileKey               = @"profile";
 NSString *const kFMUserProfileNameKey           = @"name";
 NSString *const kFMUserProfileFirstNameKey      = @"firstName";
@@ -23,12 +25,27 @@ NSString *const kFMUserProfilePictureURL        = @"pictureURL";
 NSString *const kFMUserProfileAgeKey            = @"age";
 NSString *const kFMUserProfileRelationshipStatusKey = @"relationShipStatus";
 
-
-
 #pragma mark - Photo Class
 
 NSString *const kFMPhotoClassKey                = @"Photo";
 NSString *const kFMPhotoUserKey                 = @"user";
 NSString *const kFMPhotoPictureKey              = @"image";
+
+#pragma mark - Activity Class
+
+NSString *const kFMActivityClassKey             = @"Activity";
+NSString *const kFMActivityTypeKey              = @"type";
+NSString *const kFMActivityFromUserKey          = @"fromUser";
+NSString *const kFMActivityToUserKey            = @"toUser";
+NSString *const kFMActivityPhotoKey             = @"photo";
+NSString *const kFMActivityTypeLikeKey          = @"like";
+NSString *const kFMActivityTypeDislikeKey       = @"dislike";
+
+#pragma mark - Settings
+
+NSString *const kFMMenEnabledKey                = @"men";
+NSString *const kFMWomenEnabledKey              = @"women";
+NSString *const kFMSingleEnableKey              = @"single";
+NSString *const kFMAgeMaxKey                    = @"ageMax";
 
 @end

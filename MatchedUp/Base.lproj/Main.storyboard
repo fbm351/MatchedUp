@@ -136,7 +136,7 @@
                         <outlet property="photoImageView" destination="Zfi-nE-Qln" id="Ua0-2B-MRg"/>
                         <outlet property="settingBarButtonItem" destination="DIK-84-5lN" id="2bT-PV-xB1"/>
                         <outlet property="tagLineLabel" destination="nOz-Xy-GR7" id="BJl-nB-uYC"/>
-                        <segue destination="mrB-fd-WfS" kind="push" identifier="homeToProfile" id="Xxt-5M-DeK"/>
+                        <segue destination="mrB-fd-WfS" kind="push" identifier="homeToProfileSegue" id="Xxt-5M-DeK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xTt-or-BwN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -313,6 +313,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="tmS-dx-m7t"/>
                     <connections>
+                        <outlet property="ageLabel" destination="81w-2H-3fo" id="G7w-iJ-hOj"/>
                         <outlet property="ageSlider" destination="8qT-lh-HkT" id="Xr1-zf-qJz"/>
                         <outlet property="editProfileButton" destination="2eA-j1-4Ke" id="W1D-F0-lnJ"/>
                         <outlet property="logoutButton" destination="ADS-v7-mS7" id="Duw-ja-Bjs"/>

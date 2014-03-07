@@ -7,6 +7,8 @@
 //
 
 #import "FMHomeViewController.h"
+#import "FMTestUser.h"
+#import "FMProfileViewController.h"
 
 @interface FMHomeViewController ()
 
@@ -46,12 +48,15 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    //self.likeButton.enabled = NO;
-    //self.dislikeButton.enabled = NO;
+    //[FMTestUser saveTestUserToParse];
+    
+    self.likeButton.enabled = NO;
+    self.dislikeButton.enabled = NO;
     self.infoButton.enabled = NO;
     self.currentPhotoIndex = 0;
     
     PFQuery *query = [PFQuery queryWithClassName:kFMPhotoClassKey];
+    [query whereKey:kFMPhotoUserKey notEqualTo:[PFUser currentUser]];
     [query includeKey:kFMPhotoUserKey];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error)
@@ -97,7 +102,7 @@
 
 - (IBAction)infoButtonPressed:(UIButton *)sender
 {
-    
+    [self performSegueWithIdentifier:@"homeToProfileSegue" sender:nil];
 }
 
 #pragma mark - Helper Methods
@@ -118,6 +123,48 @@
                 NSLog(@"%@", error);
             }
         }];
+        
+        PFQuery *queryForLike = [PFQuery queryWithClassName:kFMActivityClassKey];
+        [queryForLike whereKey:kFMActivityTypeKey equalTo:kFMActivityTypeLikeKey];
+        [queryForLike whereKey:kFMActivityPhotoKey equalTo:self.photo];
+        [queryForLike whereKey:kFMActivityFromUserKey equalTo:[PFUser currentUser]];
+        
+        PFQuery *queryForDisLike = [PFQuery queryWithClassName:kFMActivityClassKey];
+        [queryForDisLike whereKey:kFMActivityTypeKey equalTo:kFMActivityTypeDislikeKey];
+        [queryForDisLike whereKey:kFMActivityPhotoKey equalTo:self.photo];
+        [queryForDisLike whereKey:kFMActivityFromUserKey equalTo:[PFUser currentUser]];
+        
+        PFQuery *likeAndDisLikeQuery = [PFQuery orQueryWithSubqueries:@[queryForDisLike, queryForLike]];
+        [likeAndDisLikeQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            if (!error) {
+                self.activities = [objects mutableCopy];
+                if ([self.activities count] == 0) {
+                    self.isLikedByCurrentUser = NO;
+                    self.isDisLikedByCurrentUser = NO;
+                }
+                else
+                {
+                    PFObject *activity = self.activities[0];
+                    if ([activity[kFMActivityTypeKey] isEqualToString:kFMActivityTypeLikeKey])
+                    {
+                        self.isLikedByCurrentUser = YES;
+                        self.isDisLikedByCurrentUser = NO;
+                    }
+                    else if ([activity[kFMActivityTypeKey] isEqualToString:kFMActivityTypeDislikeKey])
+                    {
+                        self.isLikedByCurrentUser = NO;
+                        self.isDisLikedByCurrentUser = YES;
+                    }
+                    else
+                    {
+                        //Not used yet
+                    }
+                }
+                self.likeButton.enabled = YES;
+                self.dislikeButton.enabled = YES;
+                self.infoButton.enabled = YES;
+            }
+        }];
     }
 }
 
@@ -125,7 +172,7 @@
 {
     self.firstNameLabel.text = self.photo[kFMPhotoUserKey][kFMUserProfileKey][kFMUserProfileFirstNameKey];
     self.ageLabel.text = [NSString stringWithFormat:@"%@", self.photo[kFMPhotoUserKey][kFMUserProfileKey][kFMUserProfileAgeKey]];
-    self.tagLineLabel.text = self.photo[kFMUserProfileKey][@"tagLine"];
+    self.tagLineLabel.text = self.photo[kFMUserProfileKey][kFMUserTagLineKey];
 
 }
 
@@ -144,11 +191,11 @@
 
 - (void)saveLike
 {
-    PFObject *likeActivity = [PFObject objectWithClassName:@"Activity"];
-    [likeActivity setObject:@"like" forKey:@"type"];
-    [likeActivity setObject:[PFUser currentUser] forKey:@"fromUser"];
-    [likeActivity setObject:[self.photo objectForKey:@"user"] forKey:@"toUser"];
-    [likeActivity setObject:self.photo forKey:@"photo"];
+    PFObject *likeActivity = [PFObject objectWithClassName:kFMActivityClassKey];
+    [likeActivity setObject:kFMActivityTypeLikeKey forKey:kFMActivityTypeKey];
+    [likeActivity setObject:[PFUser currentUser] forKey:kFMActivityFromUserKey];
+    [likeActivity setObject:[self.photo objectForKey:kFMPhotoUserKey] forKey:kFMActivityToUserKey];
+    [likeActivity setObject:self.photo forKey:kFMActivityPhotoKey];
     [likeActivity saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         self.isLikedByCurrentUser = YES;
         self.isDisLikedByCurrentUser = NO;
@@ -159,11 +206,11 @@
 
 - (void)saveDisLike
 {
-    PFObject *disLikeActivity = [PFObject objectWithClassName:@"Activity"];
-    [disLikeActivity setObject:@"dislike" forKey:@"type"];
-    [disLikeActivity setObject:[PFUser currentUser] forKey:@"fromUser"];
-    [disLikeActivity setObject:[self.photo objectForKey:@"user"] forKey:@"toUser"];
-    [disLikeActivity setObject:self.photo forKey:@"photo"];
+    PFObject *disLikeActivity = [PFObject objectWithClassName:kFMActivityClassKey];
+    [disLikeActivity setObject:kFMActivityTypeDislikeKey forKey:kFMActivityTypeKey];
+    [disLikeActivity setObject:[PFUser currentUser] forKey:kFMActivityFromUserKey];
+    [disLikeActivity setObject:[self.photo objectForKey:kFMPhotoUserKey] forKey:kFMActivityToUserKey];
+    [disLikeActivity setObject:self.photo forKey:kFMActivityPhotoKey];
     [disLikeActivity saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         self.isLikedByCurrentUser = NO;
         self.isDisLikedByCurrentUser = YES;
@@ -179,7 +226,7 @@
         [self setupNextPhoto];
         return;
     }
-    else if (self.isLikedByCurrentUser)
+    else if (self.isDisLikedByCurrentUser)
     {
         for (PFObject *activity in self.activities)
         {
@@ -200,7 +247,7 @@
         [self setupNextPhoto];
         return;
     }
-    else if (self.isDisLikedByCurrentUser)
+    else if (self.isLikedByCurrentUser)
     {
         for (PFObject *activity in self.activities) {
             [activity deleteInBackground];
@@ -211,6 +258,17 @@
     else
     {
         [self saveDisLike];
+    }
+}
+
+#pragma mark - Navigation Helpers
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"homeToProfileSegue"])
+    {
+        FMProfileViewController *targetVC = segue.destinationViewController;
+        targetVC.photo = self.photo;
     }
 }
 
