@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol FMMatchViewControllerDelegate <NSObject>
+
+- (void)presentMatchesViewController;
+
+@end
+
 @interface FMMatchViewController : UIViewController
+
+@property (weak) id <FMMatchViewControllerDelegate>delegate;
+@property (strong, nonatomic) UIImage *matchedUserImage;
 
 @end

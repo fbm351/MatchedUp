@@ -31,6 +31,19 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    PFQuery *query = [PFQuery queryWithClassName:kFMPhotoClassKey];
+    [query whereKey:kFMPhotoUserKey equalTo:[PFUser currentUser]];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if ([objects count] > 0) {
+            PFObject *photo = objects[0];
+            PFFile *pictureFile = photo[kFMPhotoPictureKey];
+            [pictureFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+                self.currentUserImageView.image = [UIImage imageWithData:data];
+                self.matchedUserImageView.image = self.matchedUserImage;
+            }];
+        }
+    }];
 }
 
 - (void)didReceiveMemoryWarning
@@ -43,12 +56,12 @@
 
 - (IBAction)viewChatsButtonPressed:(UIButton *)sender
 {
-    
+    [self.delegate presentMatchesViewController];
 }
 
 - (IBAction)keepSearchingButtonPressed:(UIButton *)sender
 {
-    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 

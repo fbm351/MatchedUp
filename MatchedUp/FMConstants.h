@@ -53,6 +53,21 @@ extern NSString *const kFMWomenEnabledKey;
 extern NSString *const kFMSingleEnableKey;
 extern NSString *const kFMAgeMaxKey;
 
+#pragma mark - ChatRoom Class
+
+extern NSString *const kFMChatRoomClassKey;
+extern NSString *const kFMChatRoomUser1Key;
+extern NSString *const kFMChatRoomUser2Key;
+extern NSString *const kFMChatRoomChatKey;
+
+#pragma mark - Chat Class
+
+extern NSString *const kFMChatClassKey;
+extern NSString *const kFMChatChatRoomKey;
+extern NSString *const kFMChatFromUserKey;
+extern NSString *const kFMChatToUserKey;
+extern NSString *const kFMChatTextKey;
+
 
 
 

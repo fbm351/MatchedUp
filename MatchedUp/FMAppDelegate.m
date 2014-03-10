@@ -21,6 +21,10 @@
     
     [PFFacebookUtils initializeFacebook];
     
+    NSString *defaultPrefsFile = [[NSBundle mainBundle] pathForResource:@"defaultPrefsFile" ofType:@"plist"];
+    NSDictionary *delaultPreferences = [NSDictionary dictionaryWithContentsOfFile:defaultPrefsFile];
+    [[NSUserDefaults standardUserDefaults] registerDefaults:delaultPreferences];
+    
     return YES;
 }
 

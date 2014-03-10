@@ -9,8 +9,9 @@
 #import "FMHomeViewController.h"
 #import "FMTestUser.h"
 #import "FMProfileViewController.h"
+#import "FMMatchViewController.h"
 
-@interface FMHomeViewController ()
+@interface FMHomeViewController () <FMMatchViewControllerDelegate>
 
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *chatBarButtonItem;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *settingBarButtonItem;
@@ -200,6 +201,7 @@
         self.isLikedByCurrentUser = YES;
         self.isDisLikedByCurrentUser = NO;
         [self.activities addObject:likeActivity];
+        [self checkForPhotoUserLikes];
         [self setupNextPhoto];
     }];
 }
@@ -270,7 +272,30 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
     {
         if ([objects count] > 0) {
-            //creat our chatroom
+            [self createChatRoom];
+        }
+    }];
+}
+
+- (void)createChatRoom
+{
+    PFQuery *queryForChatRoom = [PFQuery queryWithClassName:kFMChatRoomClassKey];
+    [queryForChatRoom whereKey:kFMChatRoomUser1Key equalTo:[PFUser currentUser]];
+    [queryForChatRoom whereKey:kFMChatRoomUser2Key equalTo:self.photo[kFMPhotoUserKey]];
+    
+    PFQuery *queryForChatRoomInverse = [PFQuery queryWithClassName:kFMChatRoomClassKey];
+    [queryForChatRoomInverse whereKey:kFMChatRoomUser1Key equalTo:self.photo[kFMPhotoUserKey]];
+    [queryForChatRoomInverse whereKey:kFMChatRoomUser2Key equalTo:[PFUser currentUser]];
+    
+    PFQuery *combinedQuery = [PFQuery orQueryWithSubqueries:@[queryForChatRoom, queryForChatRoomInverse]];
+    [combinedQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if ([objects count] == 0) {
+            PFObject *chatRoom = [PFObject objectWithClassName:kFMChatRoomClassKey];
+            [chatRoom setObject:[PFUser currentUser] forKey:kFMChatRoomUser1Key];
+            [chatRoom setObject:self.photo[kFMPhotoUserKey] forKey:kFMChatRoomUser2Key];
+            [chatRoom saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                [self performSegueWithIdentifier:@"homeToMatchSegue" sender:nil];
+            }];
         }
     }];
 }
@@ -284,6 +309,21 @@
         FMProfileViewController *targetVC = segue.destinationViewController;
         targetVC.photo = self.photo;
     }
+    else if ([segue.identifier isEqualToString:@"homeToMatchSegue"])
+    {
+        FMMatchViewController *targetVC = segue.destinationViewController;
+        targetVC.matchedUserImage = self.photoImageView.image;
+        targetVC.delegate = self;
+    }
+}
+
+#pragma mark - FMMatchViewController Delegate
+- (void)presentMatchesViewController
+{
+    [self dismissViewControllerAnimated:NO completion:^
+    {
+        [self performSegueWithIdentifier:@"homeToMatchesSegue" sender:nil];
+    }];
 }
 
 @end

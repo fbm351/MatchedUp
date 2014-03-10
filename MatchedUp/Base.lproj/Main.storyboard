@@ -336,7 +336,7 @@
                     <navigationItem key="navigationItem" id="px4-6d-zXA"/>
                     <connections>
                         <outlet property="tableView" destination="nnS-eq-8Ed" id="kpb-ex-BHj"/>
-                        <segue destination="svC-H3-AOR" kind="push" identifier="matchesToChatSegue" id="Bmc-vU-G5f"/>
+                        <segue destination="svC-H3-AOR" kind="push" identifier="matchesToChatSeque" id="Bmc-vU-G5f"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CTs-Jd-1wn" userLabel="First Responder" sceneMemberID="firstResponder"/>

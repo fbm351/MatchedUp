@@ -15,4 +15,5 @@
     #import <Foundation/Foundation.h>
     #import <Parse/Parse.h>
     #import "FMConstants.h"
+#import "JSQSystemSoundPlayer.h"
 #endif
