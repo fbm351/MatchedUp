@@ -106,6 +106,33 @@
     [self performSegueWithIdentifier:@"homeToProfileSegue" sender:nil];
 }
 
+
+#pragma mark - Navigation Helpers
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"homeToProfileSegue"])
+    {
+        FMProfileViewController *targetVC = segue.destinationViewController;
+        targetVC.photo = self.photo;
+    }
+    else if ([segue.identifier isEqualToString:@"homeToMatchSegue"])
+    {
+        FMMatchViewController *targetVC = segue.destinationViewController;
+        targetVC.matchedUserImage = self.photoImageView.image;
+        targetVC.delegate = self;
+    }
+}
+
+#pragma mark - FMMatchViewController Delegate
+- (void)presentMatchesViewController
+{
+    [self dismissViewControllerAnimated:NO completion:^
+    {
+        [self performSegueWithIdentifier:@"homeToMatchesSegue" sender:nil];
+    }];
+}
+
 #pragma mark - Helper Methods
 
 - (void)queryForCurrentPhotoIndex
@@ -174,7 +201,7 @@
     self.firstNameLabel.text = self.photo[kFMPhotoUserKey][kFMUserProfileKey][kFMUserProfileFirstNameKey];
     self.ageLabel.text = [NSString stringWithFormat:@"%@", self.photo[kFMPhotoUserKey][kFMUserProfileKey][kFMUserProfileAgeKey]];
     self.tagLineLabel.text = self.photo[kFMUserProfileKey][kFMUserTagLineKey];
-
+    
 }
 
 - (void)setupNextPhoto
@@ -270,11 +297,11 @@
     [query whereKey:kFMActivityToUserKey equalTo:[PFUser currentUser]];
     [query whereKey:kFMActivityTypeKey equalTo:kFMActivityTypeLikeKey];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
-    {
-        if ([objects count] > 0) {
-            [self createChatRoom];
-        }
-    }];
+     {
+         if ([objects count] > 0) {
+             [self createChatRoom];
+         }
+     }];
 }
 
 - (void)createChatRoom
@@ -300,30 +327,41 @@
     }];
 }
 
-#pragma mark - Navigation Helpers
-
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (BOOL)allowPhoto
 {
-    if ([segue.identifier isEqualToString:@"homeToProfileSegue"])
+    int maxAge = [[NSUserDefaults standardUserDefaults] integerForKey:kFMAgeMaxKey];
+    BOOL men = [[NSUserDefaults standardUserDefaults] boolForKey:kFMMenEnabledKey];
+    BOOL women = [[NSUserDefaults standardUserDefaults] boolForKey:kFMWomenEnabledKey];
+    BOOL single = [[NSUserDefaults standardUserDefaults] boolForKey:kFMSingleEnableKey];
+    
+    PFObject *photo = self.photos[self.currentPhotoIndex];
+    PFUser *user = photo[kFMPhotoUserKey];
+    
+    int userAge = [user[kFMUserProfileKey][kFMUserProfileAgeKey] intValue];
+    NSString *gender = user[kFMUserProfileKey][kFMUserProfileGenderKey];
+    NSString *relationShipStatus = user[kFMUserProfileKey][kFMUserProfileRelationshipStatusKey];
+    
+    if (userAge > maxAge)
     {
-        FMProfileViewController *targetVC = segue.destinationViewController;
-        targetVC.photo = self.photo;
+        return NO;
     }
-    else if ([segue.identifier isEqualToString:@"homeToMatchSegue"])
+    else if (men == NO && [gender isEqualToString:@"male"])
     {
-        FMMatchViewController *targetVC = segue.destinationViewController;
-        targetVC.matchedUserImage = self.photoImageView.image;
-        targetVC.delegate = self;
+        return NO;
+    }
+    else if (women == NO && [gender isEqualToString:@"female"])
+    {
+        return NO;
+    }
+    else if (single == NO && ([relationShipStatus isEqualToString:@"single"] || relationShipStatus == nil))
+    {
+        return NO;
+    }
+    else
+    {
+        return YES;
     }
 }
 
-#pragma mark - FMMatchViewController Delegate
-- (void)presentMatchesViewController
-{
-    [self dismissViewControllerAnimated:NO completion:^
-    {
-        [self performSegueWithIdentifier:@"homeToMatchesSegue" sender:nil];
-    }];
-}
 
 @end
