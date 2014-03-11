@@ -18,10 +18,11 @@
 @property (strong, nonatomic) IBOutlet UIImageView *photoImageView;
 @property (strong, nonatomic) IBOutlet UILabel *firstNameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *ageLabel;
-@property (strong, nonatomic) IBOutlet UILabel *tagLineLabel;
 @property (strong, nonatomic) IBOutlet UIButton *likeButton;
 @property (strong, nonatomic) IBOutlet UIButton *infoButton;
 @property (strong, nonatomic) IBOutlet UIButton *dislikeButton;
+@property (strong, nonatomic) IBOutlet UIView *labelContainerView;
+@property (strong, nonatomic) IBOutlet UIView *buttonContainerView;
 
 @property (strong, nonatomic) NSArray *photos;
 @property (strong, nonatomic) PFObject *photo;
@@ -50,6 +51,15 @@
 	// Do any additional setup after loading the view.
     
     //[FMTestUser saveTestUserToParse];
+
+    [self setUpViews];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    self.photoImageView.image = nil;
+    self.firstNameLabel.text = nil;
+    self.ageLabel.text = nil;
     
     self.likeButton.enabled = NO;
     self.dislikeButton.enabled = NO;
@@ -63,7 +73,15 @@
         if (!error)
         {
             self.photos = objects;
-            [self queryForCurrentPhotoIndex];
+            
+            if (![self allowPhoto])
+            {
+                [self setupNextPhoto];
+            }
+            else
+            {
+                [self queryForCurrentPhotoIndex];
+            }
         }
         else
         {
@@ -71,6 +89,7 @@
         }
     }];
     
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -200,7 +219,6 @@
 {
     self.firstNameLabel.text = self.photo[kFMPhotoUserKey][kFMUserProfileKey][kFMUserProfileFirstNameKey];
     self.ageLabel.text = [NSString stringWithFormat:@"%@", self.photo[kFMPhotoUserKey][kFMUserProfileKey][kFMUserProfileAgeKey]];
-    self.tagLineLabel.text = self.photo[kFMUserProfileKey][kFMUserTagLineKey];
     
 }
 
@@ -208,7 +226,15 @@
 {
     if (self.currentPhotoIndex + 1 < self.photos.count) {
         self.currentPhotoIndex ++;
-        [self queryForCurrentPhotoIndex];
+        
+        if (![self allowPhoto])
+        {
+            [self setupNextPhoto];
+        }
+        else
+        {
+            [self queryForCurrentPhotoIndex];
+        }
     }
     else
     {
@@ -361,6 +387,23 @@
     {
         return YES;
     }
+}
+
+- (void)setUpViews
+{
+    [self addShadowForView:self.buttonContainerView];
+    [self addShadowForView:self.labelContainerView];
+    self.photoImageView.layer.masksToBounds = YES;
+    self.view.backgroundColor = [UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1.0];
+}
+
+- (void)addShadowForView:(UIView *)view
+{
+    view.layer.masksToBounds = NO;
+    view.layer.cornerRadius = 4;
+    view.layer.shadowRadius = 1;
+    view.layer.shadowOffset = CGSizeMake(0, 1);
+    view.layer.shadowOpacity = 0.25;
 }
 
 
